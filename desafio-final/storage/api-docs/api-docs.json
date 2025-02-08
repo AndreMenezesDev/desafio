@@ -1,0 +1,164 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Desafio Final - Vendas",
+        "description": "Documentação da API para desafio final do módulo Arquitetura de Software da Faculdade - XPEducação",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/clientes": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Lista todos os clientes",
+                "operationId": "586f4dccfe53833546ac247db716e2f9",
+                "responses": {
+                    "200": {
+                        "description": "Listagem de todos os clientes"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Cria ou Atualiza um novo cliente",
+                "operationId": "46b99fd613819d9f214e2f3de2b29519",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Joaquim"
+                                    },
+                                    "sobrenome": {
+                                        "type": "string",
+                                        "example": "Santos"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "jUHsR@example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cliente criado com sucesso"
+                    }
+                }
+            }
+        },
+        "/api/contarclientes": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Retorna a quantidade total de Clientes",
+                "operationId": "535f344282a3cf17566f6cde9c2afbfe",
+                "responses": {
+                    "200": {
+                        "description": "sucesso"
+                    }
+                }
+            }
+        },
+        "/api/clientes/{id}": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Obtém um cliente pelo ID",
+                "description": "Retorna os detalhes de um cliente específico.",
+                "operationId": "getClienteById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "sucesso"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Deleta um cliente pelo id",
+                "description": "Retorna true ou false.",
+                "operationId": "deleteCliente",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "sucesso"
+                    }
+                }
+            }
+        },
+        "/api/clientes/nome/{nome}": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Obtém um cliente pelo nome",
+                "description": "Retorna os detalhes de um cliente específico.",
+                "operationId": "getClienteByName",
+                "parameters": [
+                    {
+                        "name": "nome",
+                        "in": "path",
+                        "description": "Nome do cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "sucesso"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Clientes",
+            "description": "Clientes"
+        }
+    ]
+}
